@@ -67,12 +67,27 @@
                 </div>
                 <div class="row buttons">
                   <button class="clear-canvas"><img src="/frontend/images/clear.png" alt=""></button>
-                  <button class="save-img"><img src="/frontend/images/undo.png" alt=""></button>
+                  <button class="save-img"><img src="/frontend/images/save.png" alt=""></button>
                 </div>
             </section></section>
               <section class="draw">
                 <div class="e1">
-
+                  <div class="popup" id="popup-1">
+                    <div class="overlay"></div>
+                    <div class="content">
+                      <div class="close-btn" onclick="togglePopup()"><img src="/frontend/images/clear.png" alt=""></div>
+                      <h1 class="word">-</h1>
+                      <div class="next-done">
+                        <button class="next"><img src="/frontend/images/next.png" alt=""></button>
+                        <button class="done"><img src="/frontend/images/done.png" alt=""></button>
+                      </div>
+                    </div>
+                  </div>
+                  <button onclick="togglePopup()" class="chooseword" id="chooseword">Choose word</button>
+                  <h1 class="chosen"></h1>
+                  <div class="timer">
+                    <span id="timer">00:00</span>
+                  </div>
                 </div>
                 <div class="drawing-board">
                   <canvas id="canvas"></canvas>
