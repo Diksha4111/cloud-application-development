@@ -131,3 +131,67 @@ saveImg.addEventListener("click", () => {
 canvas.addEventListener("mousedown", startDraw);
 canvas.addEventListener("mousemove", drawing);
 canvas.addEventListener("mouseup", () => isDrawing = false);
+
+
+//TIMER
+function timer(){
+    let timeSecond = 120;
+const timeH = document.querySelector("#timer");
+
+displayTime(timeSecond);
+
+const countDown = setInterval(() => {
+  timeSecond--;
+  displayTime(timeSecond);
+  if (timeSecond == 0 || timeSecond < 1) {
+    endCount();
+    clearInterval(countDown);
+  }
+}, 1000);
+
+function displayTime(second) {
+  const min = Math.floor(second / 60);
+  const sec = Math.floor(second % 60);
+  timeH.innerHTML = `
+  ${min < 10 ? "0" : ""}${min}:${sec < 10 ? "0" : ""}${sec}
+  `;
+}
+function endCount() {
+  timeH.innerHTML = "Time out";
+}
+}
+
+
+//chooseword
+function togglePopup(){
+    document.getElementById("popup-1").classList.toggle("active");
+}
+
+//Random word generator
+let btn = document.querySelector(".next");
+btn.addEventListener('click', function(){
+    let arr = [
+        "apple",
+        "mango",
+        "house",
+        "ball",
+        "tree"
+    ];
+    let disPlay = document.querySelector('.word');
+    disPlay.innerHTML = arr[Math.floor(Math.random()*arr.length)];;
+    console.log(disPlay.innerHTML);
+})
+//display chosen word
+let chosen = document.querySelector(".done");
+chosen.addEventListener('click', function(){
+    togglePopup();
+    let disPlay = document.querySelector('.word');
+    let word = document.querySelector('.chosen');
+    let w = disPlay.innerHTML;
+    let text = w.charAt(0) + ' _ '.repeat(w.length - 2) + w.charAt(w.length - 1);
+    word.innerHTML = text;
+    console.log(word.innerHTML);
+
+    timer();
+
+})
